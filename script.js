@@ -33,11 +33,23 @@ $(function () {
     //
 
 
-    $(".time-block").each(functions(){
+    $(".time-block").each(function(){
       var currentTime = dayjs().hour();
-      
+      var selectedTime = parseInt($(this).attr("id"));
 
-
+      if (currentTime > selectedTime) {
+        $(this).removeClass("present")
+        $(this).removeClass("future")
+        $(this).addClass("past")
+      } else if (currentTime < selectedTime) {
+        $(this).removeClass("past")
+        $(this).removeClass("present")
+        $(this).addClass("future")
+      } else if (currentTime == selectedTime) {
+        $(this).removeClass("past")
+        $(this).removeClass("future")
+        $(this).addClass("present")
+      }
     })
     // TODO: Add code to apply the past, present, or future class to each time
     // block by comparing the id to the current hour. HINTS: How can the id
