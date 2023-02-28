@@ -18,7 +18,7 @@ $(function () {
     // useful when saving the description in local storage?
     
     var description
-  $(".btn saveBtn").click(function(){
+  $(".saveBtn").click(function(){
 
     var text = $(this).siblings(".description").val();
     var time = $(this).parent().attr("id");
@@ -58,8 +58,14 @@ $(function () {
     // current hour in 24-hour time?
     //
 
+    function renderlocalstorage() {
+      for (var hour = 9; hour <= 17; hour++)
+      var hourID = "#" + hour;
+      var hourdDescription = hourid + ".description";
 
-
+      $(hourdDescription).val(localStorage.getItem(hour));
+    }
+  
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
